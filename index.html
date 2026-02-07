@@ -1,0 +1,291 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Mendes 3D | Catálogo</title>
+
+<style>
+*{margin:0;padding:0;box-sizing:border-box;font-family:Arial, Helvetica, sans-serif;}
+
+:root{
+    --bg:#0e0e0e;
+    --card:#1a1a1a;
+    --text:#f1f1f1;
+    --muted:#a0a0a0;
+    --accent:#25D366;
+    --border:#2a2a2a;
+}
+
+body{
+    background:var(--bg);
+    color:var(--text);
+}
+
+a{text-decoration:none;color:inherit}
+
+/* HEADER */
+header{
+    position:fixed;
+    width:100%;
+    background:#111;
+    border-bottom:1px solid var(--border);
+    z-index:1000;
+}
+
+.nav{
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    padding:12px 18px;
+    max-width:1200px;
+    margin:auto;
+}
+
+.logo-area{
+    display:flex;
+    align-items:center;
+    gap:10px;
+}
+
+.logo-area img{
+    height:42px;
+}
+
+.logo-text{
+    font-weight:bold;
+    letter-spacing:2px;
+}
+
+.nav-links{
+    display:flex;
+    gap:15px;
+    align-items:center;
+}
+
+.btn{
+    background:var(--accent);
+    padding:10px 14px;
+    border-radius:8px;
+    color:#000;
+    font-weight:bold;
+}
+
+/* HERO */
+.hero{
+    padding:110px 20px 50px;
+    text-align:center;
+}
+
+.hero h1{
+    font-size:2rem;
+    margin-bottom:10px;
+}
+
+.hero p{
+    color:var(--muted);
+    margin-bottom:20px;
+}
+
+/* GRID */
+.catalogo{
+    padding:20px;
+    max-width:1200px;
+    margin:auto;
+}
+
+.grid{
+    display:grid;
+    grid-template-columns:1fr;
+    gap:20px;
+}
+
+.card{
+    background:var(--card);
+    border-radius:12px;
+    overflow:hidden;
+    border:1px solid var(--border);
+    display:flex;
+    flex-direction:column;
+}
+
+.card img{
+    width:100%;
+    height:220px;
+    object-fit:cover;
+}
+
+.card-content{
+    padding:15px;
+    display:flex;
+    flex-direction:column;
+    flex:1;
+}
+
+.card p{
+    color:var(--muted);
+    font-size:0.9rem;
+    flex:1;
+}
+
+.card button{
+    margin-top:12px;
+    padding:10px;
+    border:none;
+    border-radius:8px;
+    background:var(--accent);
+    font-weight:bold;
+    cursor:pointer;
+}
+
+/* SOBRE */
+.sobre{
+    padding:40px 20px;
+    background:#111;
+    text-align:center;
+}
+
+/* SOCIAL */
+.socials a{
+    display:inline-flex;
+    align-items:center;
+    justify-content:center;
+    width:44px;
+    height:44px;
+    margin:5px;
+    background:#1a1a1a;
+    border-radius:10px;
+    border:1px solid var(--border);
+}
+
+.socials svg{
+    width:22px;
+    height:22px;
+    fill:white;
+}
+
+/* FOOTER */
+footer{
+    padding:25px;
+    text-align:center;
+    border-top:1px solid var(--border);
+    color:var(--muted);
+}
+
+/* RESPONSIVO */
+@media(min-width:600px){
+    .grid{grid-template-columns:repeat(2,1fr);}
+}
+@media(min-width:900px){
+    .grid{grid-template-columns:repeat(3,1fr);}
+}
+</style>
+</head>
+
+<body>
+
+<!-- HEADER -->
+<header>
+<div class="nav">
+    <div class="logo-area">
+        <!-- coloque sua logo aqui -->
+        <img src="logo.png" alt="Logo Mendes 3D">
+        <div class="logo-text">MENDES 3D</div>
+    </div>
+
+    <div class="nav-links">
+        <a href="https://www.instagram.com/mendes3d_?igsh=MW5seTYyY2hzYWNvdg==" target="_blank">Instagram</a>
+        <a class="btn" onclick="enviarWhats()">Orçamento</a>
+    </div>
+</div>
+</header>
+
+<!-- HERO -->
+<section class="hero">
+<h1>Transformando ideias em realidade tridimensional</h1>
+<p>Personalização e precisão em cada impressão 3D</p>
+<a class="btn" onclick="enviarWhats()">Falar no WhatsApp</a>
+</section>
+
+<!-- CATALOGO -->
+<section class="catalogo">
+<div class="grid">
+
+<div class="card">
+<img src="capinha-celular.jpg">
+<div class="card-content">
+<h3>Capinha de Celular</h3>
+<p>Capinhas personalizadas feitas em impressão 3D.</p>
+<button onclick="enviarWhats()">Encomendar</button>
+</div>
+</div>
+
+<div class="card">
+<img src="katana-retratil.jpg">
+<div class="card-content">
+<h3>Katana Retrátil</h3>
+<p>Modelo articulado e personalizável.</p>
+<button onclick="enviarWhats()">Encomendar</button>
+</div>
+</div>
+
+<div class="card">
+<img src="figure-action.jpg">
+<div class="card-content">
+<h3>Figure Action</h3>
+<p>Miniaturas com alta precisão.</p>
+<button onclick="enviarWhats()">Encomendar</button>
+</div>
+</div>
+
+<div class="card">
+<img src="porta-livros.jpg">
+<div class="card-content">
+<h3>Porta Livros</h3>
+<p>Suportes decorativos e resistentes.</p>
+<button onclick="enviarWhats()">Encomendar</button>
+</div>
+</div>
+
+</div>
+</section>
+
+<!-- SOBRE -->
+<section class="sobre">
+<h2>Sobre a Mendes 3D</h2>
+<p>Especialistas em impressão 3D personalizada entregando qualidade e criatividade.</p>
+</section>
+
+<!-- FOOTER -->
+<footer>
+
+<div class="socials">
+
+<a href="https://www.instagram.com/mendes3d_?igsh=MW5seTYyY2hzYWNvdg==" target="_blank">
+<svg viewBox="0 0 24 24"><path d="M7 2C4 2 2 4 2 7v10c0 3 2 5 5 5h10c3 0 5-2 5-5V7c0-3-2-5-5-5H7zm5 5a5 5 0 110 10 5 5 0 010-10z"/></svg>
+</a>
+
+<a href="https://tiktok.com/@techinfobr_?_r=1&_t=ZS-93QswMafJOq" target="_blank">
+<svg viewBox="0 0 24 24"><path d="M16 3a6 6 0 004 4v3a9 9 0 01-4-1v6a6 6 0 11-6-6v3a3 3 0 102 3V3h4z"/></svg>
+</a>
+
+<a href="https://produto.mercadolivre.com.br/MLB-6230963804" target="_blank">
+<svg viewBox="0 0 24 24"><path d="M12 2C6 2 2 6 2 12s4 10 10 10 10-4 10-10S18 2 12 2z"/></svg>
+</a>
+
+</div>
+
+<p>© 2026 Mendes 3D</p>
+
+</footer>
+
+<script>
+function enviarWhats(){
+const numero="5598999742676";
+const mensagem=encodeURIComponent("Olá, gostaria de saber mais sobre as impressões 3D do catálogo!");
+window.open(`https://wa.me/${numero}?text=${mensagem}`,"_blank");
+}
+</script>
+
+</body>
+</html>
