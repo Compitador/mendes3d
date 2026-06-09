@@ -1,291 +1,216 @@
 <!DOCTYPE html>
-<html lang="pt-br">
+<html lang="pt-BR">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Mendes 3D | Catálogo</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mendes 3D | Impressão 3D e Encomendas</title>
+    <style>
+        /* Estilos Gerais */
+        :root {
+            --primary-color: #00d2ff;
+            --secondary-color: #3a7bd5;
+            --bg-color: #121212;
+            --card-bg: #1e1e1e;
+            --text-color: #ffffff;
+            --whatsapp-color: #25D366;
+        }
 
-<style>
-*{margin:0;padding:0;box-sizing:border-box;font-family:Arial, Helvetica, sans-serif;}
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: var(--bg-color);
+            color: var(--text-color);
+            margin: 0;
+            padding: 0;
+            text-align: center;
+        }
 
-:root{
-    --bg:#0e0e0e;
-    --card:#1a1a1a;
-    --text:#f1f1f1;
-    --muted:#a0a0a0;
-    --accent:#25D366;
-    --border:#2a2a2a;
-}
+        header {
+            background: linear-gradient(135deg, var(--secondary-color), var(--primary-color));
+            padding: 40px 20px;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.5);
+        }
 
-body{
-    background:var(--bg);
-    color:var(--text);
-}
+        h1 {
+            margin: 0;
+            font-size: 2.5rem;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+        }
 
-a{text-decoration:none;color:inherit}
+        .social-links {
+            margin-top: 15px;
+        }
 
-/* HEADER */
-header{
-    position:fixed;
-    width:100%;
-    background:#111;
-    border-bottom:1px solid var(--border);
-    z-index:1000;
-}
+        .social-links a {
+            color: #fff;
+            text-decoration: none;
+            font-weight: bold;
+            margin: 0 10px;
+            padding: 8px 15px;
+            border: 2px solid #fff;
+            border-radius: 20px;
+            transition: 0.3s;
+        }
 
-.nav{
-    display:flex;
-    justify-content:space-between;
-    align-items:center;
-    padding:12px 18px;
-    max-width:1200px;
-    margin:auto;
-}
+        .social-links a:hover {
+            background: #fff;
+            color: var(--secondary-color);
+        }
 
-.logo-area{
-    display:flex;
-    align-items:center;
-    gap:10px;
-}
+        /* Seção de Informações / Hero */
+        .info-section {
+            background-color: #1a1a1a;
+            padding: 20px;
+            margin-bottom: 30px;
+            border-bottom: 1px solid #333;
+        }
 
-.logo-area img{
-    height:42px;
-}
+        .info-section p {
+            font-size: 1.1rem;
+            margin: 5px 0;
+        }
 
-.logo-text{
-    font-weight:bold;
-    letter-spacing:2px;
-}
+        .highlight {
+            color: var(--primary-color);
+            font-weight: bold;
+        }
 
-.nav-links{
-    display:flex;
-    gap:15px;
-    align-items:center;
-}
+        /* Grid de Produtos */
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
+        }
 
-.btn{
-    background:var(--accent);
-    padding:10px 14px;
-    border-radius:8px;
-    color:#000;
-    font-weight:bold;
-}
+        .product-card {
+            background-color: var(--card-bg);
+            border-radius: 10px;
+            padding: 20px;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.3);
+            transition: transform 0.3s ease;
+        }
 
-/* HERO */
-.hero{
-    padding:110px 20px 50px;
-    text-align:center;
-}
+        .product-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 16px rgba(0,210,255,0.2);
+        }
 
-.hero h1{
-    font-size:2rem;
-    margin-bottom:10px;
-}
+        .product-image {
+            width: 100%;
+            height: 200px;
+            border-radius: 8px;
+            margin-bottom: 15px;
+            overflow: hidden;
+        }
 
-.hero p{
-    color:var(--muted);
-    margin-bottom:20px;
-}
+        .product-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
 
-/* GRID */
-.catalogo{
-    padding:20px;
-    max-width:1200px;
-    margin:auto;
-}
+        .product-title {
+            font-size: 1.3rem;
+            margin: 10px 0;
+        }
 
-.grid{
-    display:grid;
-    grid-template-columns:1fr;
-    gap:20px;
-}
+        .product-price {
+            font-size: 1.5rem;
+            color: var(--primary-color);
+            font-weight: bold;
+            margin-bottom: 15px;
+        }
 
-.card{
-    background:var(--card);
-    border-radius:12px;
-    overflow:hidden;
-    border:1px solid var(--border);
-    display:flex;
-    flex-direction:column;
-}
+        .btn-comprar {
+            display: inline-block;
+            background-color: var(--whatsapp-color);
+            color: white;
+            text-decoration: none;
+            padding: 12px 20px;
+            border-radius: 25px;
+            font-weight: bold;
+            font-size: 1rem;
+            width: 80%;
+            transition: background-color 0.3s;
+        }
 
-.card img{
-    width:100%;
-    height:220px;
-    object-fit:cover;
-}
+        .btn-comprar:hover {
+            background-color: #1ebe57;
+        }
 
-.card-content{
-    padding:15px;
-    display:flex;
-    flex-direction:column;
-    flex:1;
-}
-
-.card p{
-    color:var(--muted);
-    font-size:0.9rem;
-    flex:1;
-}
-
-.card button{
-    margin-top:12px;
-    padding:10px;
-    border:none;
-    border-radius:8px;
-    background:var(--accent);
-    font-weight:bold;
-    cursor:pointer;
-}
-
-/* SOBRE */
-.sobre{
-    padding:40px 20px;
-    background:#111;
-    text-align:center;
-}
-
-/* SOCIAL */
-.socials a{
-    display:inline-flex;
-    align-items:center;
-    justify-content:center;
-    width:44px;
-    height:44px;
-    margin:5px;
-    background:#1a1a1a;
-    border-radius:10px;
-    border:1px solid var(--border);
-}
-
-.socials svg{
-    width:22px;
-    height:22px;
-    fill:white;
-}
-
-/* FOOTER */
-footer{
-    padding:25px;
-    text-align:center;
-    border-top:1px solid var(--border);
-    color:var(--muted);
-}
-
-/* RESPONSIVO */
-@media(min-width:600px){
-    .grid{grid-template-columns:repeat(2,1fr);}
-}
-@media(min-width:900px){
-    .grid{grid-template-columns:repeat(3,1fr);}
-}
-</style>
+        /* Footer */
+        footer {
+            margin-top: 40px;
+            padding: 20px;
+            background-color: #0a0a0a;
+            font-size: 0.9rem;
+            color: #888;
+        }
+    </style>
 </head>
-
 <body>
 
-<!-- HEADER -->
-<header>
-<div class="nav">
-    <div class="logo-area">
-        <!-- coloque sua logo aqui -->
-        <img src="logo.png" alt="Logo Mendes 3D">
-        <div class="logo-text">MENDES 3D</div>
+    <header>
+        <h1>Mendes 3D</h1>
+        <p>A materialização da sua imaginação!</p>
+        <div class="social-links">
+            <a href="https://instagram.com/mendes3d_" target="_blank">📸 @mendes3d_</a>
+            <a href="https://wa.me/5598999742676?text=Ol%C3%A1%2C%20gostaria%20de%20fazer%20uma%20cota%C3%A7%C3%A3o%20de%20encomenda%203D!" target="_blank">💬 WhatsApp</a>
+        </div>
+    </header>
+
+    <div class="info-section">
+        <p>📦 <span class="highlight">Enviamos para todo o Brasil</span></p>
+        <p>🛠️ Recebemos encomendas e fazemos cotações personalizadas</p>
     </div>
 
-    <div class="nav-links">
-        <a href="https://www.instagram.com/mendes3d_?igsh=MW5seTYyY2hzYWNvdg==" target="_blank">Instagram</a>
-        <a class="btn" onclick="enviarWhats()">Orçamento</a>
+    <h2>Catálogo de Produtos</h2>
+
+    <div class="container">
+        <div class="product-card">
+            <div class="product-image">
+                <img src="spider-man-noir.jpg" alt="Spider-Man Noir 3D">
+            </div>
+            <h3 class="product-title">Spider-Man Noir</h3>
+            <div class="product-price">R$ 35,00</div>
+            <a href="https://wa.me/5598999742676?text=Ol%C3%A1%21%20Gostaria%20de%20comprar%20o%20Spider-Man%20Noir%20por%20R%24%2035." target="_blank" class="btn-comprar">Comprar no WhatsApp</a>
+        </div>
+
+        <div class="product-card">
+            <div class="product-image">
+                <img src="pantera-negra.jpg" alt="Pantera Negra 3D">
+            </div>
+            <h3 class="product-title">Pantera Negra</h3>
+            <div class="product-price">R$ 35,00</div>
+            <a href="https://wa.me/5598999742676?text=Ol%C3%A1%21%20Gostaria%20de%20comprar%20o%20Pantera%20Negra%20por%20R%24%2035." target="_blank" class="btn-comprar">Comprar no WhatsApp</a>
+        </div>
+
+        <div class="product-card">
+            <div class="product-image">
+                <img src="batman.jpg" alt="Batman 3D">
+            </div>
+            <h3 class="product-title">Batman</h3>
+            <div class="product-price">R$ 45,00</div>
+            <a href="https://wa.me/5598999742676?text=Ol%C3%A1%21%20Gostaria%20de%20comprar%20o%20Batman%20por%20R%24%2045." target="_blank" class="btn-comprar">Comprar no WhatsApp</a>
+        </div>
+
+        <div class="product-card">
+            <div class="product-image">
+                <img src="mascara-pantera-negra.jpg" alt="Máscara Pantera Negra 3D">
+            </div>
+            <h3 class="product-title">Máscara Pantera Negra</h3>
+            <div class="product-price">R$ 50,00</div>
+            <a href="https://wa.me/5598999742676?text=Ol%C3%A1%21%20Gostaria%20de%20comprar%20a%20M%C3%A1scara%20Pantera%20Negra%20por%20R%24%2050." target="_blank" class="btn-comprar">Comprar no WhatsApp</a>
+        </div>
     </div>
-</div>
-</header>
 
-<!-- HERO -->
-<section class="hero">
-<h1>Transformando ideias em realidade tridimensional</h1>
-<p>Personalização e precisão em cada impressão 3D</p>
-<a class="btn" onclick="enviarWhats()">Falar no WhatsApp</a>
-</section>
-
-<!-- CATALOGO -->
-<section class="catalogo">
-<div class="grid">
-
-<div class="card">
-<img src="capinha-celular.jpg">
-<div class="card-content">
-<h3>Capinha de Celular</h3>
-<p>Capinhas personalizadas feitas em impressão 3D.</p>
-<button onclick="enviarWhats()">Encomendar</button>
-</div>
-</div>
-
-<div class="card">
-<img src="katana-retratil.jpg">
-<div class="card-content">
-<h3>Katana Retrátil</h3>
-<p>Modelo articulado e personalizável.</p>
-<button onclick="enviarWhats()">Encomendar</button>
-</div>
-</div>
-
-<div class="card">
-<img src="figure-action.jpg">
-<div class="card-content">
-<h3>Figure Action</h3>
-<p>Miniaturas com alta precisão.</p>
-<button onclick="enviarWhats()">Encomendar</button>
-</div>
-</div>
-
-<div class="card">
-<img src="porta-livros.jpg">
-<div class="card-content">
-<h3>Porta Livros</h3>
-<p>Suportes decorativos e resistentes.</p>
-<button onclick="enviarWhats()">Encomendar</button>
-</div>
-</div>
-
-</div>
-</section>
-
-<!-- SOBRE -->
-<section class="sobre">
-<h2>Sobre a Mendes 3D</h2>
-<p>Especialistas em impressão 3D personalizada entregando qualidade e criatividade.</p>
-</section>
-
-<!-- FOOTER -->
-<footer>
-
-<div class="socials">
-
-<a href="https://www.instagram.com/mendes3d_?igsh=MW5seTYyY2hzYWNvdg==" target="_blank">
-<svg viewBox="0 0 24 24"><path d="M7 2C4 2 2 4 2 7v10c0 3 2 5 5 5h10c3 0 5-2 5-5V7c0-3-2-5-5-5H7zm5 5a5 5 0 110 10 5 5 0 010-10z"/></svg>
-</a>
-
-<a href="https://tiktok.com/@techinfobr_?_r=1&_t=ZS-93QswMafJOq" target="_blank">
-<svg viewBox="0 0 24 24"><path d="M16 3a6 6 0 004 4v3a9 9 0 01-4-1v6a6 6 0 11-6-6v3a3 3 0 102 3V3h4z"/></svg>
-</a>
-
-<a href="https://produto.mercadolivre.com.br/MLB-6230963804" target="_blank">
-<svg viewBox="0 0 24 24"><path d="M12 2C6 2 2 6 2 12s4 10 10 10 10-4 10-10S18 2 12 2z"/></svg>
-</a>
-
-</div>
-
-<p>© 2026 Mendes 3D</p>
-
-</footer>
-
-<script>
-function enviarWhats(){
-const numero="5598999742676";
-const mensagem=encodeURIComponent("Olá, gostaria de saber mais sobre as impressões 3D do catálogo!");
-window.open(`https://wa.me/${numero}?text=${mensagem}`,"_blank");
-}
-</script>
+    <footer>
+        <p>&copy; 2026 Mendes 3D. Todos os direitos reservados.</p>
+        <p>Contato: (98) 99974-2676 | Instagram: @mendes3d_</p>
+    </footer>
 
 </body>
 </html>
