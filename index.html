@@ -37,24 +37,41 @@
             letter-spacing: 2px;
         }
 
+        /* Botões do Cabeçalho Corrigidos */
         .social-links {
-            margin-top: 15px;
+            margin-top: 25px;
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 15px;
         }
 
         .social-links a {
             color: #fff;
             text-decoration: none;
             font-weight: bold;
-            margin: 0 10px;
-            padding: 8px 15px;
-            border: 2px solid #fff;
-            border-radius: 20px;
-            transition: 0.3s;
+            padding: 12px 25px;
+            border-radius: 30px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+            font-size: 1rem;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.2);
+        }
+
+        .btn-instagram {
+            background: linear-gradient(45deg, #f09433 0%, #e6683c 25%, #dc2743 50%, #cc2366 75%, #bc1888 100%);
+        }
+
+        .btn-whatsapp-header {
+            background-color: var(--whatsapp-color);
         }
 
         .social-links a:hover {
-            background: #fff;
-            color: var(--secondary-color);
+            transform: translateY(-4px);
+            box-shadow: 0 8px 15px rgba(0,0,0,0.4);
         }
 
         /* Seção de Informações / Hero */
@@ -104,12 +121,19 @@
             border-radius: 8px;
             margin-bottom: 15px;
             overflow: hidden;
+            background-color: #333;
         }
 
         .product-image img {
             width: 100%;
             height: 100%;
             object-fit: cover;
+            cursor: zoom-in; /* Muda o cursor para indicar que pode clicar */
+            transition: opacity 0.3s;
+        }
+
+        .product-image img:hover {
+            opacity: 0.8;
         }
 
         .product-title {
@@ -149,6 +173,54 @@
             font-size: 0.9rem;
             color: #888;
         }
+
+        /* --- Estilos do Modal (Imagem Expandida) --- */
+        .modal {
+            display: none; /* Escondido por padrão */
+            position: fixed;
+            z-index: 1000;
+            padding-top: 60px;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            overflow: auto;
+            background-color: rgba(0,0,0,0.9); /* Fundo preto transparente */
+            backdrop-filter: blur(5px);
+        }
+
+        .modal-content {
+            margin: auto;
+            display: block;
+            max-width: 90%;
+            max-height: 80vh;
+            border-radius: 10px;
+            box-shadow: 0 0 20px rgba(0, 210, 255, 0.3);
+            animation: zoomIn 0.3s ease;
+        }
+
+        @keyframes zoomIn {
+            from {transform: scale(0.8); opacity: 0;}
+            to {transform: scale(1); opacity: 1;}
+        }
+
+        .close {
+            position: absolute;
+            top: 20px;
+            right: 35px;
+            color: #f1f1f1;
+            font-size: 40px;
+            font-weight: bold;
+            transition: 0.3s;
+            cursor: pointer;
+        }
+
+        .close:hover,
+        .close:focus {
+            color: var(--primary-color);
+            text-decoration: none;
+            cursor: pointer;
+        }
     </style>
 </head>
 <body>
@@ -157,8 +229,8 @@
         <h1>Mendes 3D</h1>
         <p>A materialização da sua imaginação!</p>
         <div class="social-links">
-            <a href="https://instagram.com/mendes3d_" target="_blank">📸 @mendes3d_</a>
-            <a href="https://wa.me/5598999742676?text=Ol%C3%A1%2C%20gostaria%20de%20fazer%20uma%20cota%C3%A7%C3%A3o%20de%20encomenda%203D!" target="_blank">💬 WhatsApp</a>
+            <a href="https://instagram.com/mendes3d_" target="_blank" class="btn-instagram">📸 Instagram</a>
+            <a href="https://wa.me/5598999742676?text=Ol%C3%A1%2C%20gostaria%20de%20fazer%20uma%20cota%C3%A7%C3%A3o%20de%20encomenda%203D!" target="_blank" class="btn-whatsapp-header">💬 WhatsApp</a>
         </div>
     </header>
 
@@ -172,7 +244,7 @@
     <div class="container">
         <div class="product-card">
             <div class="product-image">
-                <img src="spider-man-noir.jpg" alt="Spider-Man Noir 3D">
+                <img src="spider-man-noir.jpg" alt="Spider-Man Noir 3D" class="zoom-img">
             </div>
             <h3 class="product-title">Spider-Man Noir</h3>
             <div class="product-price">R$ 35,00</div>
@@ -181,7 +253,7 @@
 
         <div class="product-card">
             <div class="product-image">
-                <img src="pantera-negra.jpg" alt="Pantera Negra 3D">
+                <img src="pantera-negra.jpg" alt="Pantera Negra 3D" class="zoom-img">
             </div>
             <h3 class="product-title">Pantera Negra</h3>
             <div class="product-price">R$ 35,00</div>
@@ -190,7 +262,7 @@
 
         <div class="product-card">
             <div class="product-image">
-                <img src="batman.jpg" alt="Batman 3D">
+                <img src="batman.jpg" alt="Batman 3D" class="zoom-img">
             </div>
             <h3 class="product-title">Batman</h3>
             <div class="product-price">R$ 45,00</div>
@@ -199,7 +271,7 @@
 
         <div class="product-card">
             <div class="product-image">
-                <img src="mascara-pantera-negra.jpg" alt="Máscara Pantera Negra 3D">
+                <img src="mascara-pantera-negra.jpg" alt="Máscara Pantera Negra 3D" class="zoom-img">
             </div>
             <h3 class="product-title">Máscara Pantera Negra</h3>
             <div class="product-price">R$ 50,00</div>
@@ -211,6 +283,41 @@
         <p>&copy; 2026 Mendes 3D. Todos os direitos reservados.</p>
         <p>Contato: (98) 99974-2676 | Instagram: @mendes3d_</p>
     </footer>
+
+    <div id="imageModal" class="modal">
+        <span class="close">&times;</span>
+        <img class="modal-content" id="imgExpanded">
+    </div>
+
+    <script>
+        // Pega o modal, a imagem de dentro dele e o botão de fechar
+        var modal = document.getElementById("imageModal");
+        var modalImg = document.getElementById("imgExpanded");
+        var closeBtn = document.getElementsByClassName("close")[0];
+
+        // Pega todas as imagens que têm a classe "zoom-img"
+        var images = document.querySelectorAll(".zoom-img");
+
+        // Adiciona a ação de clique para cada uma das imagens
+        images.forEach(function(img) {
+            img.onclick = function() {
+                modal.style.display = "block";
+                modalImg.src = this.src; // Copia a fonte da imagem clicada para a imagem grandona
+            }
+        });
+
+        // Quando o usuário clicar no botão (X), fecha o modal
+        closeBtn.onclick = function() {
+            modal.style.display = "none";
+        }
+
+        // Quando o usuário clicar fora da imagem (no fundo escuro), fecha o modal também
+        window.onclick = function(event) {
+            if (event.target == modal) {
+                modal.style.display = "none";
+            }
+        }
+    </script>
 
 </body>
 </html>
